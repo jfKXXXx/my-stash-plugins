@@ -1,0 +1,8 @@
+name: Custom Folder Links
+description: Adds access to exposed custom folders in the nav bar
+version: 0.2
+ui:
+  javascript: 
+    - javascript.js
+  requires:
+    - CommunityScriptsUILibrary
