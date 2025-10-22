@@ -6,5 +6,4 @@ ui:
     - javascript.js
   css:
     - styles.css
-  html:
-    - index.html
+  
