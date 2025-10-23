@@ -1,7 +1,7 @@
 "use strict";
 
 const App = {
-  config: null,
+  config: { apiKey: "", pluginId: "" },
   pluginInitialized: false,
 };
 
@@ -15,12 +15,13 @@ const getConfig = async () => {
     }
     const response = await csLib.getConfiguration("PicsWall");
 
-    App.config = response ?? null;
+    App.config.apiKey = response.apiKey ?? "";
+    App.config.pluginId = response.pluginId ?? "";
     if (!App.config) {
       console.warn("PicsWall: No configuration found");
       return null;
     }
-    console.log("PicsWall: Configuration loaded", App.config);
+    console.log("PicsWall: Configuration loaded", App.config.pluginId);
     console.log("PicsWall: Configuration Apikey", App.config.apiKey);
     return App.config;
   } catch (e) {
