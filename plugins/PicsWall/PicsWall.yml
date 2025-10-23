@@ -2,11 +2,9 @@ name: Pics Wall
 description: Adds custom new picture walls views to Stash
 author: jfKXXXx
 version: 0.1.2
-url: https://github.com/jfKXXXx/my-stash-plugins/tree/b1fed4452b98bf3be9479a551474c28d45b2bf2e/plugins/PicsWall
+url: https://github.com/jfKXXXx/my-stash-plugins/tree/b1fed4452b98bf3be9479a551474c28d45b2bf2e/plugins/customFolderLinks
 ui:
-  requires:
-    - CommunityScriptsUILibrary
   javascript:
     - javascript.js
-  css:
-    - styles.css
+  requires:
+    - CommunityScriptsUILibrary
