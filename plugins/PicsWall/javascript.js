@@ -1,7 +1,7 @@
 "use strict";
 
 const App = {
-  config: { apiKey: "", pluginId: "" },
+  config: {},
   pluginInitialized: false,
 };
 
