@@ -21,7 +21,7 @@ const getConfig = async () => {
       console.warn("PicsWall: No configuration found");
       return null;
     }
-    console.log("PicsWall: Configuration loaded", App.config.pluginId);
+    console.log("PicsWall: Configuration loaded", App.config);
     console.log("PicsWall: Configuration Apikey", App.config.apiKey);
     return App.config;
   } catch (e) {
