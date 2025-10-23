@@ -15,9 +15,8 @@ const getConfig = async () => {
     }
     const response = await csLib.getConfiguration("PicsWall");
     console.log(
-      "PicsWall: Configuration request response:(type, response)",
-      typeof response,
-      response
+      "PicsWall: Configuration request response:(type)",
+      typeof response
     );
     App.config = response ?? null;
     if (!App.config) {
