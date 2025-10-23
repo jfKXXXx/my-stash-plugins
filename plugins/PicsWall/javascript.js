@@ -1,3 +1,6 @@
+()=>{
+'use strict';
+
 // ============================
 // 🧠 CONFIG ET VARIABLES GLOBALES
 // ============================
@@ -246,4 +249,4 @@ FetchRandomImages().then(() => renderGallery()); //Temp: load a random bunch of 
 // ============================
 // 🧩 UTILISATION SYNCHRONE PLUS TARD
 // ============================
-
+}
