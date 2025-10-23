@@ -13,7 +13,7 @@ const getConfig = async () => {
       );
       return null;
     }
-    const config = await getConfiguration("PicsWall");
+    const config = await csLib.getConfiguration("PicsWall");
     App.config = config ?? null;
     if (!App.config) {
       console.warn("PicsWall: No configuration found");
