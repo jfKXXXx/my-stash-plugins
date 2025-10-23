@@ -15,14 +15,14 @@ const getConfig = async () => {
     }
     const response = await csLib.getConfiguration("PicsWall");
 
-    App.config.apiKey = response.apiKey ?? "";
-    App.config.pluginId = response.pluginId ?? "";
+    App.config = response;
+
     if (!App.config) {
       console.warn("PicsWall: No configuration found");
       return null;
     }
     console.log("PicsWall: Configuration loaded", App.config);
-    console.log("PicsWall: Configuration Apikey", App.config.apiKey);
+
     return App.config;
   } catch (e) {
     console.error("PicsWall: Failed to get configuration", e);
