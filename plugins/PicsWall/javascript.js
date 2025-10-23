@@ -8,7 +8,9 @@ const App = {
 const getConfig = async () => {
   try {
     if (typeof getConfiguration !== "function") {
-      console.warn("PicsWall: getConfiguration not available (missing UI library?)");
+      console.warn(
+        "PicsWall: getConfiguration not available (missing UI library?)"
+      );
       return null;
     }
     const config = await getConfiguration("PicsWall");
@@ -28,7 +30,7 @@ const getConfig = async () => {
 // Initialization (avoid top-level await by using an async IIFE)
 (async () => {
   const conf = await getConfig();
-  App.pluginInitialized = !!conf;
+  App.pluginInitialized = true;
   if (App.pluginInitialized) {
     console.log("PicsWall: Plugin initialized");
   }
