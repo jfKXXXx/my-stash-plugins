@@ -10,7 +10,7 @@
   const getConfig = async () => {
     try {
       const config = await getConfiguration("PicsWall");
-      App.config = config ?? null;
+      return config ?? null;
     } catch (e) {
       console.error("PicsWall: Failed to get configuration", e);
     }
@@ -18,9 +18,9 @@
   };
 
   //Initialization
-  async () => {
-    await getConfig();
+  () => {
+    if (App.pluginInitialized) return;
+    App.config = getConfig();
     App.pluginInitialized = true;
-    console.log("PicsWall: Plugin initialized");
   };
 };
