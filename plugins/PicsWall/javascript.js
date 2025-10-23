@@ -14,9 +14,13 @@ const getConfig = async () => {
       return null;
     }
     const response = await csLib.getConfiguration("PicsWall");
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const data = await response.json();
+    console.log("PicsWall: Retrieved configuration data", data);
 
-    App.config = await data;
+    App.config = (await data) ?? {};
 
     if (!App.config) {
       console.warn("PicsWall: No configuration found");
