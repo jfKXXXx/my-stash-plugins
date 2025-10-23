@@ -7,7 +7,7 @@ const App = {
 
 const getConfig = async () => {
   try {
-    if (typeof getConfiguration !== "function") {
+    if (typeof csLib.getConfiguration !== "function") {
       console.warn(
         "PicsWall: getConfiguration not available (missing UI library?)"
       );
