@@ -14,7 +14,7 @@
     } catch (e) {
       console.error("PicsWall: Failed to get configuration", e);
     }
-    console.log("PicsWall: Configuration loaded", CONFIG);
+    console.log("PicsWall: Configuration loaded", config);
   };
 
   //Initialization
