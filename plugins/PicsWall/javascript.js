@@ -1,7 +1,9 @@
 // ============================
 // 🧠 CONFIG ET VARIABLES GLOBALES
 // ============================
-const URL = "http://192.168.1.196:9999/graphql";
+// const URL = "http://192.168.1.196:9999/graphql";
+const URL = "http://localhost:9999/graphql";
+
 const API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiJqZmt4eHgiLCJzdWIiOiJBUElLZXkiLCJpYXQiOjE3NTgwMDM3MTd9.7x9MA4yXXk3Oc1NOiJIpxog-6mXHUoZ4JLo4hsbDMcc";
 
 // 🧱 Objet global : accessible de partout
