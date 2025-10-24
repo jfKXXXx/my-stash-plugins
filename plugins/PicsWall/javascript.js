@@ -8,20 +8,21 @@ const App = {
 const getPluginConfig = async () => {
   try {
     console.log("PicsWall Building config query...")
-    let gqlQuery = `{
-            configuration {
-              general
-              {
-                apiKey
-                username
-                password
-                
-                
-            }
-              ui
-              plugins
-            
-          }`
+    let gqlQuery = `query GetPluginConfig {
+   configuration {
+    general
+    {
+    	apiKey
+      username
+      password
+      
+      
+  }
+    ui
+    plugins
+  
+}
+}`
       
     
       console.log("Sending graphql request: ", gqlQuery)
