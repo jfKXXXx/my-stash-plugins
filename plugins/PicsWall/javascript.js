@@ -27,12 +27,13 @@ const getConfig = async () => {
       variables: {}
     }
     console.log("Sending graphql request")
-    const res = await csLib.callGQL(gqlReq)
-    if (!res) {
-      throw new Error("error can't fetch graphql response:")
-    }
-    console.log("PicsWall: graphql response found: ", res);
-    App.config = res;
+    await csLib.callGQL(gqlReq).then(res=>{
+      console.log("PicsWall: graphql response found: ", res);
+      App.config = res;
+
+    })
+    
+    
 
     if (!App.config) {
       console.warn("PicsWall: No configuration found");
@@ -50,16 +51,18 @@ const getConfig = async () => {
 async function InitPlugin() {
   try {
      console.log("Initialising PicsWall PLugin...");
+
+     if (App.pluginInitialized) {
+        console.warn("PicsWall plugin already initialised: exiting.");
+        return;
+
+      }
      
       //Create event listeners...
       console.log("PicsWall: creating event listeners...");
       document.addEventListener("OnPicsWallInit", (e) => {OnPluginReady(e)});
 
-      if (App.pluginInitialized) {
-        console.warn("PicsWall plugin already initialised: exiting.");
-        return null;
-
-      }
+      
       const configData = await getConfig().then(data=> {
         let evt = new CustomEvent("OnPicsWallInit", {details: data}) 
         document.dispatchEvent(evt);
