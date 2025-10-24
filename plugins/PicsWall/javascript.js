@@ -7,20 +7,32 @@ const App = {
 
 const getConfig = async () => {
   try {
-    if (typeof csLib.getConfiguration !== "function") {
-      console.warn(
-        "PicsWall: getConfiguration not available (missing UI library?)"
-      );
-      return null;
-    }
-    const response = await csLib.getConfiguration("PicsWall");
-    if (!response || !response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-    const data = await response.json();
-    console.log("PicsWall: Retrieved configuration data", data);
+    console.log("PicsWall Building config query...")
+    let gqlReq = {
+      query: `{
+            configuration {
+              general
+              {
+                apiKey
+                username
+                password
+                
+                
+            }
+              ui
+              plugins
+            
+          }`,
 
-    App.config = (await data.data) ?? {};
+      variables: {}
+    }
+    console.log("Sending graphql request")
+    const res = await csLib.callGQL(gqlReq)
+    if (!res) {
+      throw new Error("error can't fetch graphql response:")
+    }
+    console.log("PicsWall: graphql response found: ", res);
+    App.config = res;
 
     if (!App.config) {
       console.warn("PicsWall: No configuration found");
@@ -35,11 +47,44 @@ const getConfig = async () => {
   }
 };
 
+async function InitPlugin() {
+  try {
+     console.log("Initialising PicsWall PLugin...");
+     
+      //Create event listeners...
+      console.log("PicsWall: creating event listeners...");
+      document.addEventListener("OnPicsWallInit", (e) => {OnPluginReady(e)});
+
+      if (App.pluginInitialized) {
+        console.warn("PicsWall plugin already initialised: exiting.");
+        return null;
+
+      }
+      const configData = await getConfig().then(data=> {
+        let evt = new CustomEvent("OnPicsWallInit", {details: data}) 
+        document.dispatchEvent(evt);
+      });
+    
+      
+
+
+
+  }
+  catch (error) {
+    console.error("error during PicsWall plugin Init: ", error)
+
+  }
+ 
+  
+}
+
+function OnPluginReady(e) {
+    console.log("PicsWall Plugin initialised successfully. event details: ", e);
+    App.pluginInitialized = true;
+}
+
+
 // Initialization (avoid top-level await by using an async IIFE)
 (async () => {
-  const conf = await getConfig();
-  App.pluginInitialized = true;
-  if (App.pluginInitialized) {
-    console.log("PicsWall: Plugin initialized");
-  }
+  InitPlugin();
 })();
