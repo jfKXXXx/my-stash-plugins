@@ -8,7 +8,7 @@ const App = {
 const getPluginConfig = async () => {
   try {
     console.log("PicsWall Building config query...")
-    let gqlQuery = `query GetPluginConfig {
+    const query = `query GetPluginConfig {
    configuration {
     general
     {
@@ -27,7 +27,7 @@ const getPluginConfig = async () => {
     
       console.log("Sending graphql request: ", gqlQuery)
       console.log("Waiting response...")
-      await csLib.callGQL({gqlQuery}).then(res => {
+      await csLib.callGQL({query}).then(res => {
         console.log("PicsWall: graphql response found: ", res);
         App.config = res;
 
