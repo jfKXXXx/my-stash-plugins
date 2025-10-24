@@ -25,7 +25,7 @@ const getPluginConfig = async () => {
 }`
       
     
-      console.log("Sending graphql request: ", gqlQuery)
+      console.log("Sending graphql request: ", query)
       console.log("Waiting response...")
       await csLib.callGQL({query}).then(res => {
         console.log("PicsWall: graphql response found: ", res);
