@@ -59,11 +59,21 @@ async function InitPlugin() {
       //TODO Create event listeners...
       console.log("PicsWall: creating event listeners...");
       
+      console.log("Getting plugin configuration...");
+      await getPluginConfig().then(data => {
+          console.log("Found configuration data: ", data);
+
+
+
+      })
 
   }
   catch (error) {
     console.error("error during PicsWall plugin Init: ", error)
 
+  }
+  finally {
+    console.log("PicsWall plugin initialized successfully.") //TODO: send custom event
   }
  
   
