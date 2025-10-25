@@ -53,7 +53,7 @@ const getPluginConfig = async () => {
 
 function OnStashPageChange(evt) {
   console.log("PicsWall: Stash location changed event fired:", evt)
-  
+
 }
 
 function OnDomReady(evt){
@@ -88,7 +88,7 @@ async function InitPlugin() {
   }
   finally {
     console.log("PicsWall plugin initialized successfully.") //TODO: send custom event
-    pluginInitialized= true;
+    App.pluginInitialized= true;
   }
  
   
