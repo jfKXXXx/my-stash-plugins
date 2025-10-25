@@ -29,7 +29,11 @@ const getPluginConfig = async () => {
       console.log("Waiting response...")
       await csLib.callGQL({query}).then(res => {
         console.log("PicsWall: graphql response found: ", res);
-        App.config = res;
+        App.config = {
+          apiKey: res.configuration.general.apiKey,
+          pluginConfig: res.configuration?.plugins["PicsWall"] ?? {}
+
+        };
 
     })
     
@@ -73,6 +77,7 @@ async function InitPlugin() {
   }
   finally {
     console.log("PicsWall plugin initialized successfully.") //TODO: send custom event
+    pluginInitialized= true;
   }
  
   
