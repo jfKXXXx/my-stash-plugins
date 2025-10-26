@@ -2,7 +2,7 @@
 
 function main() {
 
-  if (!document.location.pathname.includes("/images/")) return;
+  if (!document.location.pathname.includes("/images")) return;
 
   csLib.waitForElement(".mb2 btn-group", (elt) => {
     console.log("PicsWall: btn group html found", elt);
