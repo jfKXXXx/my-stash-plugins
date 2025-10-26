@@ -52,6 +52,8 @@ const getPluginConfig = async () => {
 
 function OnStashPageChange(evt) {
   console.log("PicsWall: Stash location changed event fired:", evt)
+  console.log("PicsWall: Stash current page", document.location.href)
+  
 
 }
 
@@ -81,7 +83,7 @@ async function InitPlugin() {
 
       //TODO Create event listeners...
       console.log("PicsWall: creating event listeners...");
-      document.addEventListener("DOMContentLoaded", OnDomReady);
+      csLib.waitForElement("body", OnDomReady);
       console.log("waiting for dom loading...");
       
 
