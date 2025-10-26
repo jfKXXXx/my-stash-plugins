@@ -59,9 +59,10 @@ function OnStashPageChange(evt) {
 
 function OnDomReady(evt){
   console.log("PicsWall: DOMLoaded event fired:", evt)
+  console.log("PicsWall: creating event listeners...");
+
   
-    console.log("PicsWall plugin initialized successfully.") //TODO: send custom event ?
-    App.pluginInitialized= true;
+    
   
 }
 
@@ -78,10 +79,14 @@ async function InitPlugin() {
           console.log("Found configuration data: ", data);
         })
 
-      //TODO Create event listeners...
-      console.log("PicsWall: creating event listeners...");
-      csLib.waitForElement(".mb2 btn-group", OnDomReady);
+      // Create event listeners...
       console.log("waiting for dom loading...");
+      
+      const elt = await csLib.waitForElement(".mb2 btn-group", OnDomReady);
+      
+    console.log("PicsWall plugin initialized successfully.") //TODO: send custom event ?
+    App.pluginInitialized= true;
+
       
 
   }
