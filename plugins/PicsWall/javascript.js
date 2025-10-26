@@ -16,13 +16,12 @@ const getPluginConfig = async () => {
       username
       password
       
+      }
+        ui
+        plugins
       
-  }
-    ui
-    plugins
-  
-}
-}`
+    }
+    }`
       
     
       console.log("Sending graphql request: ", query)
@@ -62,7 +61,9 @@ function OnDomReady(evt){
   stashListener.addEventListener("stash:location", OnStashPageChange);
   
 
-
+    console.log("PicsWall plugin initialized successfully.") //TODO: send custom event
+    App.pluginInitialized= true;
+  
 }
 
 async function InitPlugin() {
@@ -73,29 +74,23 @@ async function InitPlugin() {
         return null;
 
       }
+      console.log("Getting plugin configuration...");
+      await getPluginConfig().then(data => {
+          console.log("Found configuration data: ", data);
+        })
+
       //TODO Create event listeners...
       console.log("PicsWall: creating event listeners...");
       document.addEventListener("DOMContentLoaded", OnDomReady);
       console.log("waiting for dom loading...");
       
-      
-      console.log("Getting plugin configuration...");
-      await getPluginConfig().then(data => {
-          console.log("Found configuration data: ", data);
-
-
-
-      })
 
   }
   catch (error) {
     console.error("error during PicsWall plugin Init: ", error)
 
   }
-  finally {
-    console.log("PicsWall plugin initialized successfully.") //TODO: send custom event
-    App.pluginInitialized= true;
-  }
+  
  
   
 }
