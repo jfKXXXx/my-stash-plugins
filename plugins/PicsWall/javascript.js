@@ -59,10 +59,7 @@ function OnStashPageChange(evt) {
 
 function OnDomReady(evt){
   console.log("PicsWall: DOMLoaded event fired:", evt)
-  console.log("creating stash listeners...")
-  stashListener.addEventListener("stash:location", OnStashPageChange);
   
-
     console.log("PicsWall plugin initialized successfully.") //TODO: send custom event
     App.pluginInitialized= true;
   
