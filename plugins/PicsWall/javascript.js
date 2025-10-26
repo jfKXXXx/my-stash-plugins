@@ -58,6 +58,11 @@ function OnStashPageChange(evt) {
 
 function OnDomReady(evt){
   console.log("PicsWall: DOMLoaded event fired:", evt)
+  console.log("creating stash listeners...")
+  stashListener.addEventListener("stash:location", OnStashPageChange);
+  
+
+
 }
 
 async function InitPlugin() {
@@ -70,8 +75,9 @@ async function InitPlugin() {
       }
       //TODO Create event listeners...
       console.log("PicsWall: creating event listeners...");
-      document.addEventListener("DOMContentLoaded", OnDomReady)
-      window.stashListener.addEventListener("stash:location", OnStashPageChange);
+      document.addEventListener("DOMContentLoaded", OnDomReady);
+      console.log("waiting for dom loading...");
+      
       
       console.log("Getting plugin configuration...");
       await getPluginConfig().then(data => {
