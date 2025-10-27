@@ -4,8 +4,8 @@ function main() {
 
   if (!document.location.pathname.includes("/images")) return;
 
-  csLib.waitForElement(".mb2.btn-group", (elt) => {
-    console.log("PicsWall: btn group html found", elt);
+  csLib.waitForElement("filtered-list-toolbar btn-toolbar", (elt) => {
+    console.log("PicsWall: images toolbarr html found", elt);
     CreatePicsWallButton(elt);
     
   
