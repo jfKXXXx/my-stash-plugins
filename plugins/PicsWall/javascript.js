@@ -18,6 +18,7 @@ function CreatePicsWallButton(elt) {
   console.log("PicsWall: creating button on :", elt);
   const button = document.createElement("button");
   button.innerHTML = `<i class="fa-solid fa-images"></i>`
+  button.className = "btn-active btn-secondary"
   button.onclick = () => {
     console.log("PicsWall button clicked");
   };
