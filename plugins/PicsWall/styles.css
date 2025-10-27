@@ -1,0 +1,22 @@
+
+
+.picswall-btn {
+  background-color: #9d688d;
+  border-color: #202a32;
+  color: white;
+}
+
+.picswall-btn:hover {
+  background-color: rgb(199, 109, 143);
+  border-color: #0056b3;
+}
+
+.picswall-btn:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.5);
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #25313a;
+    border-color: #202a32;
+}
