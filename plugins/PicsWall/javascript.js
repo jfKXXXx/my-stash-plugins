@@ -5,7 +5,7 @@ picsWall.className = "picswall";
 
 function main() {
 
-  BuildPicsWall();
+  
 
   if (!document.location.pathname.includes("/images")) return;
 
@@ -13,13 +13,13 @@ function main() {
     console.log("PicsWall: images toolbarr html found", elt);
     const wallbtn= CreatePicsWallButton(elt);
     wallbtn.addEventListener('click', OnPicwallClick);
-    
+    BuildPicsWall();
   })
 }
 
 function BuildPicsWall() {
 
-  window.stash.images.forEach(img  => {
+  stash.images.forEach(img  => {
     const imgElement = document.createElement("img");
     imgElement.src = img.paths.image;
     imgElement.alt = img.id
