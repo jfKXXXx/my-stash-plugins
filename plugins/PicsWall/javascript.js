@@ -19,7 +19,7 @@ function main() {
 
 function BuildPicsWall() {
 
-  stash.images.forEach(img  => {
+  window.stash.images.forEach(img  => {
     const imgElement = document.createElement("img");
     imgElement.src = img.paths.image;
     imgElement.alt = img.id
