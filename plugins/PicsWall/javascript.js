@@ -5,6 +5,8 @@ picsWall.className = "picswall";
 
 function main() {
 
+  BuildPicsWall();
+
   if (!document.location.pathname.includes("/images")) return;
 
   csLib.waitForElement(".filtered-list-toolbar.btn-toolbar", (elt) => {
@@ -15,13 +17,31 @@ function main() {
   })
 }
 
+function BuildPicsWall() {
+
+  stash.images.forEach(img  => {
+    const imgElement = document.createElement("img");
+    imgElement.src = img.paths.image;
+    imgElement.alt = img.id
+    imgElement.className = "wall-item";
+    picsWall.appendChild(imgElement);
+  });
+
+}
+
 function OnPicwallClick(e) {
   console.log("PicsWall button clicked");
   e.preventDefault();
-  e.target.value = "active";
+  wallActive = !wallActive;
+  e.target.value = wallActive;;
   e.target.classList.toggle("active");
-  wallActive = e.target.value === "active";
-  console.log("PicsWall button is now", wallActive ? "active" : "inactive");
+  let gallery= document.querySelector(".gallery, .row.justify-content-center")
+  if (wallActive) {
+    gallery.appendChild(picsWall);
+  } else {
+    gallery.removeChild(picsWall);
+  }
+  console.log("PicsWall button is now", wallActive );
 }
 
 function CreatePicsWallButton(elt) {
