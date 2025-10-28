@@ -18,8 +18,9 @@ function main() {
 }
 
 function BuildPicsWall() {
-
-  stash.images.forEach(img  => {
+  const images = PluginApi.utils.StashServices.queryFindImages();
+  console.log("PicsWall: found images", images);
+  images.forEach(img  => {
     const imgElement = document.createElement("img");
     imgElement.src = img.paths.image;
     imgElement.alt = img.id
