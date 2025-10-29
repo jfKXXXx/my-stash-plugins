@@ -13,12 +13,12 @@ function main() {
     console.log("PicsWall: images toolbarr html found", elt);
     const wallbtn= CreatePicsWallButton(elt);
     wallbtn.addEventListener('click', OnPicwallClick);
-    BuildPicsWall();
+    
   })
 }
 
 function BuildPicsWall() {
-  const images = PluginApi.utils.StashServices.queryFindImages();
+  const images = PluginApi.utils.StashServices.queryFindImages;
   console.log("PicsWall: found images", images);
   images.forEach(img  => {
     const imgElement = document.createElement("img");
@@ -32,6 +32,7 @@ function BuildPicsWall() {
 
 function OnPicwallClick(e) {
   console.log("PicsWall button clicked");
+  CreatePicsWallButton();
   e.preventDefault();
   wallActive = !wallActive;
   e.target.value = wallActive;;
