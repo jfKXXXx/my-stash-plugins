@@ -20,13 +20,13 @@ function main() {
 function BuildPicsWall() {
   const images = stash.images;
   console.log("PicsWall: found images", images);
-  images.forEach(img  => {
+   for (const img of images) {
     const imgElement = document.createElement("img");
     imgElement.src = img.paths.image;
     imgElement.alt = img.id
     imgElement.className = "wall-item";
     picsWall.appendChild(imgElement);
-  });
+  };
 
 }
 
