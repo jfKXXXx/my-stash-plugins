@@ -20,10 +20,10 @@ function main() {
 function BuildPicsWall() {
   const images = stash.images;
   console.log("PicsWall: found images", images);
-   for (const img of images) {
+   for (let img in images) {
     const imgElement = document.createElement("img");
-    imgElement.src = img.paths.image;
-    imgElement.alt = img.id
+    imgElement.src = images[img].paths.image;
+    imgElement.alt = images[img].id
     imgElement.className = "wall-item";
     picsWall.appendChild(imgElement);
   };
