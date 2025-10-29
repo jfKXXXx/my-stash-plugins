@@ -32,7 +32,7 @@ function BuildPicsWall() {
 
 function OnPicwallClick(e) {
   console.log("PicsWall button clicked");
-  CreatePicsWallButton();
+  BuildPicsWall();
   e.preventDefault();
   wallActive = !wallActive;
   e.target.value = wallActive;;
